@@ -49,40 +49,22 @@ public class TestEIS{
 					else 
 						System.out.println("Employee with Id " + searchId + " doesn't exists.");
 					break;
-				case 2: System.out.println("Enter the employee ID to hike:");
-						int hikeId = sc.nextInt();
-						if(Employee.searchEmployeeById(emp, hikeId) >= 0)
-						{
-							System.out.println("Enter how much percentage of hike you want to increase salary:");
-							int number = sc.nextInt();
-							boolean flag = false;
-							for(int i = 0; i < emp.length; i++)
-							{
-								if(emp[i].isIDEqual(hikeId)){
-									System.out.println(emp[i].salaryHike(number));
-									flag = true;
-									}				
-							}if(flag == false){
-								System.out.println("Employee doesn't exist");
+				case 2:
+					System.out.println("Enter the employee ID to hike:");
+					int hikeId = sc.nextInt();
+					if (Employee.searchEmployeeById(emp, hikeId) >= 0) {
+						System.out.println("Enter how much percentage of hike you want to increase salary:");
+						int number = sc.nextInt();
+						boolean flag = false;
+						for (int i = 0; i < emp.length; i++) {
+							if (emp[i].isIDEqual(hikeId)) {
+								System.out.println(emp[i].salaryHike(number));
+								flag = true;
 							}
 						}
-						break;
-				// case 2: System.out.println("Enter the employee ID to hike:");
-				// 		int hikeId = sc.nextInt();
-				// 		if(Employee.searchEmployeeById(emp, hikeId) >= 0)
-				// 		{
-				// 			System.out.println("Enter how much percentage of hike you want to increase salary:");
-				// 			int number = sc.nextInt();
-
-				// 			for(int i = 0; i < emp.length; i++)
-				// 			{
-				// 				if(emp[i].isIDEqual(hikeId))
-				// 					emp[i].salaryHike(number);
-				// 				else 
-				// 					System.out.println("Entered employee doesn't exist.");
-				// 			}
-				// 		}
-				// 		break;
+					} else
+						System.out.println("Employee doesn't exist");
+					break;
 				case 3: System.out.println("Enter employee Id to display the employee details:");
 						int tempId = sc.nextInt();
 						tempId = Employee.searchEmployeeById(emp, tempId);
