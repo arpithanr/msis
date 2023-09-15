@@ -14,13 +14,14 @@ int main()
 			printf("process is not created\n");
 		}else if(pid == 0)
 		{
+			if(i== 0)
 			execlp("ls","ls",NULL);
-		}else if(pid == 1)
-		{
+			else if(i== 1)
 			execlp("date","date",NULL);
-		}else if(pid == 2)
-		{
-			execlp("pwd","pwd", NULL);
+			else if(i== 2)
+			execlp("pwd","pwd", NULL);// present working directory
+			else
+				exit(1);
 		}
 		else
 		{
