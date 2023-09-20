@@ -15,7 +15,7 @@ int main()
 		exit(-1);
 	}else if(id == 0)
 	{
-		execlp("ls","ls","-1",NULL);
+		execlp("ls","ls","-l",NULL);
 		perror("exec");
 		exit(1);
 	}else{
