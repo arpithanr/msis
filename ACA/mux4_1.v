@@ -20,16 +20,18 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module Mux2_1(
-    input sel, i1,i0,
-    output reg y
+module mux_4_1(
+    input [1:0]sel, [3:0]i,
+    output reg q
     );
     
     always@(*)
     begin
-        if(sel == 0)
-        begin y = i0; end  
-        else 
-        begin y = i1; end
+       case(sel)
+         2'b00: q = i[0];
+         2'b01: q = i[1];
+         2'b10: q = i[2];
+      default: q = i[3];
+       endcase
     end   
 endmodule
