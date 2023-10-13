@@ -5,8 +5,7 @@
 int main()
 {
 	//count number of alphabets and number of white spaces (blanks and tabs) in a given line of input
-	char str[]="All is well		
-				Fine is fine";
+	char str[]="All is well		Fine is fine";
 	int count_letter = 0;
 	int count_space = 0;
 	int i;
