@@ -2,6 +2,7 @@
 and then calculate the total sum in the main thread, you can use the following modified program: */
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdint.h>
 #include <pthread.h>
 
 #define ROWS 3
