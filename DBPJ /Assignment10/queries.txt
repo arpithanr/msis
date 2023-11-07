@@ -184,6 +184,41 @@ select loanNumber from Loan where branchName = "Perryridge" and amount between 9
 
 4. For all customers who have a loan from the bank, find their names and loan numbers
 
+select loanNumber, Customer.customerName from Borrower JOIN Customer on Borrower.customerName = Customer.customerName;
++------------+--------------+
+| loanNumber | customerName |
++------------+--------------+
+| L-17       | Jones        |
+| L-23       | Smith        |
+| L-15       | Hayes        |
+| L-93       | Curry        |
+| L-11       | Smith        |
+| L-17       | Williams     |
+| L-16       | Adams        |
++------------+--------------+
+
 5. Find the names and loan numbers of all customers who have a loan at the Periridge branch
 
+SELECT Customer.customerName, Loan.loanNumber
+FROM Borrower
+JOIN Customer ON Borrower.customerName = Customer.customerName
+JOIN Loan ON Borrower.loanNumber = Loan.loanNumber
+WHERE Loan.branchName = 'Perryridge';
++--------------+------------+
+| customerName | loanNumber |
++--------------+------------+
+| Hayes        | L-15       |
+| Adams        | L-16       |
++--------------+------------+
+
 6. Find the names of all branches that have assets greater than at least one branch in Brooklyn
+
+select branchName from branch where assets > (select MIN(assets) from Branch where branchCity="Brooklyn");
++------------+
+| branchName |
++------------+
+| Downtown   |
+| Redwood    |
+| Round Hill |
++------------+
+
