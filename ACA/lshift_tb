@@ -1,0 +1,18 @@
+
+module lshift_tb();
+reg clk,si;
+wire[3:0]so;
+wire temp;
+lshift uut(clk,si,so,temp);
+initial
+begin
+#10 clk=0;
+#10 si=1;
+#10 si=0;
+#10 si=1;
+#10 si=0;
+#100 $finish;
+end 
+always #5 clk=~clk;
+
+endmodule
