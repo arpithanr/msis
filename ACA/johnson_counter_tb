@@ -1,0 +1,15 @@
+module john_cntr_tb();
+reg clk,rst;
+wire [3:0]q;
+johnson_cntr uut(clk,rst,q);
+initial
+begin
+#10 clk=0; rst=0;
+#10 rst=1;
+#50 rst=1;
+#20 rst=0;
+#50 rst=1;
+#200 $finish;
+end
+always #5 clk=~clk;
+endmodule
