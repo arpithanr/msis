@@ -1,0 +1,25 @@
+create table record(first_name varchar(20), last_name varchar(20), age int, address varchar(50));
+insert into record values("Suresh","Rao", 21,"Manipal");
+insert into record values("Ramesh","Rao", 25,"Shimoga");
+insert into record values("Anil","K", 24,"Davangere");
+insert into record values("Sunil","S", 23,"Bangalore");
+
+ desc record;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| first_name | varchar(20) | YES  |     | NULL    |       |
+| last_name  | varchar(20) | YES  |     | NULL    |       |
+| age        | int         | YES  |     | NULL    |       |
+| address    | varchar(50) | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+
+select *  from record;
++------------+-----------+------+-----------+
+| first_name | last_name | age  | address   |
++------------+-----------+------+-----------+
+| Suresh     | Rao       |   21 | Manipal   |
+| Ramesh     | Rao       |   25 | Shimoga   |
+| Anil       | K         |   24 | Davangere |
+| Sunil      | S         |   23 | Bangalore |
++------------+-----------+------+-----------+
