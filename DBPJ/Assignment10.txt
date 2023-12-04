@@ -1,0 +1,224 @@
+create table Branch(branchName varchar(100) PRIMARY KEY, branchCity varchar(100), assets int(10));
+create table Customer(customerName varchar(100) PRIMARY KEY, customerStreet varchar(100), customerCity varchar(100));
+create table Loan(branchName varchar(100), loanNumber varchar(5) PRIMARY KEY, amount int(5));
+create table Borrower(customerName varchar(100), loanNumber varchar(100));
+create table Account(branchName varchar(100), accountNumber varchar(6) PRIMARY KEY, balance int(10));
+create table Depositor(customerName varchar(100), accountNumber varchar(100));
+
+
+insert into Branch values("Downtown","Brooklyn", 9000000);
+insert into Branch values("Redwood","Palo Alto", 21000000);
+insert into Branch values("Perryridge","Horseneck",1700000);
+insert into Branch values("Mianus","Horsenek", 400000);
+insert into Branch values("Round Hill","Horsenek", 8000000);
+insert into Branch values("Pownal","Bennington", 300000);
+insert into Branch values("North Town","Rye", 3700000);
+insert into Branch values("Brighton","Brooklyn", 7100000);
+
+insert into Customer values("Jones","Main","Harrison");
+insert into Customer values("Smith","North","Rye");
+insert into Customer values("Hayes","Main","Harrison");
+insert into Customer values("Curry","North","Rye");
+insert into Customer values("Lindsay","Park","Pittsfield");
+insert into Customer values("Turner","Putnam","Stamford");
+insert into Customer values("Williams","Nassau","Princeton");
+insert into Customer values("Adams","Spring","Pittsfield");
+insert into Customer values("Johnson","Alma","Palo Alto");
+insert into Customer values("Glenn","Stand Hill","Woodside");
+insert into Customer values("Brooks","Senator","Brooklyn");
+insert into Customer values("Green","Walnut","Stamford");
+
+insert into Loan values("Downtown","L-17", 1000);
+insert into Loan values("Redwood","L-23", 2000);
+insert into Loan values("Perryridge","L-15", 1500);
+insert into Loan values("Downtown","L-14", 1500);
+insert into Loan values("Mianus","L-93", 500);
+insert into Loan values("Round Hill","L-11", 900);
+insert into Loan values("Perryridge","L-16", 1300);
+
+insert into Borrower values("Jones","L-17");
+insert into Borrower values("Smith","L-23");
+insert into Borrower values("Hayes","L-15");
+insert into Borrower values("Jackson","L-14");
+insert into Borrower values("Curry","L-93");
+insert into Borrower values("Smith","L-11");
+insert into Borrower values("Williams","L-17");
+insert into Borrower values("Adams","L-16");
+
+insert into Account values("Downtown","A-101",500);
+insert into Account values("Mianus","A-215",700);
+insert into Account values("Perryridge","A-102",400);
+insert into Account values("Round Hill","A-305",350);
+insert into Account values("Brighton","A-201",900);
+insert into Account values("Redwood","A-222",700);
+insert into Account values("Brighton","A-217",750);
+
+insert into Depositor values("Johnson","A-101");
+insert into Depositor values("Smith","A-215");
+insert into Depositor values("Hayes","A-102");
+insert into Depositor values("Turner","A-305");
+insert into Depositor values("Johnson","A-201");
+insert into Depositor values("Jones","A-217");
+insert into Depositor values("Lindsey","A-222");
+
+select * from Branch;
++------------+------------+----------+
+| branchName | branchCity | assets   |
++------------+------------+----------+
+| Brighton   | Brooklyn   |  7100000 |
+| Downtown   | Brooklyn   |  9000000 |
+| Mianus     | Horsenek   |   400000 |
+| North Town | Rye        |  3700000 |
+| Perryridge | Horseneck  |  1700000 |
+| Pownal     | Bennington |   300000 |
+| Redwood    | Palo Alto  | 21000000 |
+| Round Hill | Horsenek   |  8000000 |
++------------+------------+----------+
+
+select * from customer;
++--------------+----------------+--------------+
+| customerName | customerStreet | customerCity |
++--------------+----------------+--------------+
+| Adams        | Spring         | Pittsfield   |
+| Brooks       | Senator        | Brooklyn     |
+| Curry        | North          | Rye          |
+| Glenn        | Stand Hill     | Woodside     |
+| Green        | Walnut         | Stamford     |
+| Hayes        | Main           | Harrison     |
+| Johnson      | Alma           | Palo Alto    |
+| Jones        | Main           | Harrison     |
+| Lindsay      | Park           | Pittsfield   |
+| Smith        | North          | Rye          |
+| Turner       | Putnam         | Stamford     |
+| Williams     | Nassau         | Princeton    |
++--------------+----------------+--------------+
+
+select * from loan;
++------------+------------+--------+
+| branchName | loanNumber | amount |
++------------+------------+--------+
+| Round Hill | L-11       |    900 |
+| Downtown   | L-14       |   1500 |
+| Perryridge | L-15       |   1500 |
+| Perryridge | L-16       |   1300 |
+| Downtown   | L-17       |   1000 |
+| Redwood    | L-23       |   2000 |
+| Mianus     | L-93       |    500 |
++------------+------------+--------+
+
+select * from borrower;
++--------------+------------+
+| customerName | loanNumber |
++--------------+------------+
+| Jones        | L-17       |
+| Smith        | L-23       |
+| Hayes        | L-15       |
+| Jackson      | L-14       |
+| Curry        | L-93       |
+| Smith        | L-11       |
+| Williams     | L-17       |
+| Adams        | L-16       |
++--------------+------------+
+
+select * from account;
++------------+---------------+---------+
+| branchName | accountNumber | balance |
++------------+---------------+---------+
+| Downtown   | A-101         |     500 |
+| Perryridge | A-102         |     400 |
+| Brighton   | A-201         |     900 |
+| Mianus     | A-215         |     700 |
+| Brighton   | A-217         |     750 |
+| Redwood    | A-222         |     700 |
+| Round Hill | A-305         |     350 |
++------------+---------------+---------+
+
+select * from depositor;
++--------------+---------------+
+| customerName | accountNumber |
++--------------+---------------+
+| Johnson      | A-101         |
+| Smith        | A-215         |
+| Hayes        | A-102         |
+| Turner       | A-305         |
+| Johnson      | A-201         |
+| Jones        | A-217         |
+| Lindsey      | A-222         |
++--------------+---------------+
+
+1. Find the names of all branches in Loan relation
+
+select branchName from Loan;
++------------+
+| branchName |
++------------+
+| Round Hill |
+| Downtown   |
+| Perryridge |
+| Perryridge |
+| Downtown   |
+| Redwood    |
+| Mianus     |
++------------+
+
+2. Find all loan numbers for loans made at the Perryridge branch with loan amounts greater than $1200
+
+select loanNumber from Loan where branchName = "Perryridge" and amount>1200;
++------------+
+| loanNumber |
++------------+
+| L-15       |
+| L-16       |
++------------+
+
+3. Find all loan numbers for loans made at the Perryridge branch with loan amounts
+ greater than $900 and less than $10000
+
+select loanNumber from Loan where branchName = "Perryridge" and amount between 900 and 10000;
++------------+
+| loanNumber |
++------------+
+| L-15       |
+| L-16       |
++------------+
+
+4. For all customers who have a loan from the bank, find their names and loan numbers
+
+select loanNumber, Customer.customerName from Borrower JOIN Customer on Borrower.customerName = Customer.customerName;
++------------+--------------+
+| loanNumber | customerName |
++------------+--------------+
+| L-17       | Jones        |
+| L-23       | Smith        |
+| L-15       | Hayes        |
+| L-93       | Curry        |
+| L-11       | Smith        |
+| L-17       | Williams     |
+| L-16       | Adams        |
++------------+--------------+
+
+5. Find the names and loan numbers of all customers who have a loan at the Periridge branch
+
+SELECT Customer.customerName, Loan.loanNumber
+FROM Borrower
+JOIN Customer ON Borrower.customerName = Customer.customerName
+JOIN Loan ON Borrower.loanNumber = Loan.loanNumber
+WHERE Loan.branchName = 'Perryridge';
++--------------+------------+
+| customerName | loanNumber |
++--------------+------------+
+| Hayes        | L-15       |
+| Adams        | L-16       |
++--------------+------------+
+
+6. Find the names of all branches that have assets greater than at least one branch in Brooklyn
+
+select branchName from branch where assets > (select MIN(assets) from Branch where branchCity="Brooklyn");
++------------+
+| branchName |
++------------+
+| Downtown   |
+| Redwood    |
+| Round Hill |
++------------+
+
