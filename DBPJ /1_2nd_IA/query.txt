@@ -1,0 +1,108 @@
+use mydb;
+create table details(patient_id int primary key, name varchar(20) NOT NULL, age int NOT NULL, sex char(1) NOT NULL, marital_status varchar(10) NOT NULL, address varchar(20) NOT NULL, phone_number int NOT NULL);
+
+desc details;
++----------------+-------------+------+-----+---------+-------+
+| Field          | Type        | Null | Key | Default | Extra |
++----------------+-------------+------+-----+---------+-------+
+| patient_id     | int(11)     | NO   | PRI | NULL    |       |
+| name           | varchar(20) | NO   |     | NULL    |       |
+| age            | int(11)     | NO   |     | NULL    |       |
+| sex            | char(1)     | NO   |     | NULL    |       |
+| marital_status | varchar(10) | NO   |     | NULL    |       |
+| address        | varchar(20) | NO   |     | NULL    |       |
+| phone_number   | int(11)     | NO   |     | NULL    |       |
++----------------+-------------+------+-----+---------+-------+
+
+insert into details values(1, 'Anil', 34, 'M', 'Married', 'Shimoga', '9980697096');
+
+insert into details values(2, 'Divya', 24, 'F', 'Married', 'Davangere', '9980697996');
+
+insert into details values(3, 'Diya', 23, 'F', 'Single', 'Manipal', '8980697996');
+
+insert into details values(4, 'Vidya', 30, 'F', 'Single', 'Manipal', '8980697998');
+
+insert into details values(5, 'Nithya', 28, 'F', 'Single', 'Bangalore', '8980697902');
+
+select * from details;
++------------+--------+-----+-----+----------------+-----------+--------------+
+| patient_id | name   | age | sex | marital_status | address   | phone_number |
++------------+--------+-----+-----+----------------+-----------+--------------+
+|          1 | Anil   |  34 | M   | Married        | Shimoga   |   2147483647 |
+|          2 | Divya  |  24 | F   | Married        | Davangere |   2147483647 |
+|          3 | Diya   |  23 | F   | Single         | Manipal   |   2147483647 |
+|          4 | Vidya  |  30 | F   | Single         | Manipal   |   2147483647 |
+|          5 | Nithya |  28 | F   | Single         | Bangalore |   2147483647 |
++------------+--------+-----+-----+----------------+-----------+--------------+
+
+create table medical_history(patient_id int NOT NULL Primary key, diabetes boolean, depression boolean, migraine_headache boolean, hypertension boolean);
+
+create table allergy(patient_id int Primary key, drug_allergy boolean, food_allergy boolean, instect_allergy boolean, dust_allergy boolean);
+
+ALTER TABLE medical_history ADD FOREIGN KEY(patient_id) References details(patient_id);
+
+ALTER TABLE allergy ADD FOREIGN KEY(patient_id) References details(patient_id);
+
+desc medical_history;
++-------------------+------------+------+-----+---------+-------+
+| Field             | Type       | Null | Key | Default | Extra |
++-------------------+------------+------+-----+---------+-------+
+| patient_id        | int(11)    | NO   | PRI | NULL    |       |
+| diabetes          | tinyint(1) | YES  |     | NULL    |       |
+| depression        | tinyint(1) | YES  |     | NULL    |       |
+| migraine_headache | tinyint(1) | YES  |     | NULL    |       |
+| hypertension      | tinyint(1) | YES  |     | NULL    |       |
++-------------------+------------+------+-----+---------+-------+
+
+ desc allergy;
++-----------------+------------+------+-----+---------+-------+
+| Field           | Type       | Null | Key | Default | Extra |
++-----------------+------------+------+-----+---------+-------+
+| patient_id      | int(11)    | NO   | PRI | NULL    |       |
+| drug_allergy    | tinyint(1) | YES  |     | NULL    |       |
+| food_allergy    | tinyint(1) | YES  |     | NULL    |       |
+| instect_allergy | tinyint(1) | YES  |     | NULL    |       |
+| dust_allergy    | tinyint(1) | YES  |     | NULL    |       |
++-----------------+------------+------+-----+---------+-------+
+
+insert into medical_history values(1, 1, 0, 0, 0);
+
+insert into medical_history values(2, 0, 1, 0, 0);
+
+insert into medical_history values(3, 0, 0, 1, 0);
+
+insert into medical_history values(4, 0, 0, 0, 1);
+
+insert into medical_history values(5, 0, 0, 1, 0);
+ 
+select * from medical_history;
++------------+----------+------------+-------------------+--------------+
+| patient_id | diabetes | depression | migraine_headache | hypertension |
++------------+----------+------------+-------------------+--------------+
+|          1 |        1 |          0 |                 0 |            0 |
+|          2 |        0 |          1 |                 0 |            0 |
+|          3 |        0 |          0 |                 1 |            0 |
+|          4 |        0 |          0 |                 0 |            1 |
+|          5 |        0 |          0 |                 1 |            0 |
++------------+----------+------------+-------------------+--------------+
+
+insert into allergy values(1, 1, 0, 0, 0);
+
+insert into allergy values(2, 0, 1, 0, 0);
+
+insert into allergy values(3, 0, 0, 1, 0);
+
+insert into allergy values(4, 0, 0, 0, 1);
+
+insert into allergy values(5, 0, 0, 1, 0);
+
+select * from allergy;
++------------+--------------+--------------+-----------------+--------------+
+| patient_id | drug_allergy | food_allergy | instect_allergy | dust_allergy |
++------------+--------------+--------------+-----------------+--------------+
+|          1 |            1 |            0 |               0 |            0 |
+|          2 |            0 |            1 |               0 |            0 |
+|          3 |            0 |            0 |               1 |            0 |
+|          4 |            0 |            0 |               0 |            1 |
+|          5 |            0 |            0 |               1 |            0 |
++------------+--------------+--------------+-----------------+--------------+
