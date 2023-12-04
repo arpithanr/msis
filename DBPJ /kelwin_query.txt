@@ -1,0 +1,514 @@
+mysql> create database dcs
+    -> ;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| bookstore          |
+| dcs                |
+| mobiledb           |
+| mysql              |
+| oct17users         |
+| performance_schema |
+| test               |
+| testbank           |
+| testdb             |
++--------------------+
+10 rows in set (0.00 sec)
+
+mysql> use dcs
+Database changed
+mysql> show tables
+    -> ;
+Empty set (0.00 sec)
+
+mysql> create table demdetails(patient_id INT PRIMARY KEY, name varchar(50), sex varchar(5),marital_status varchar(10), address varchar(50),phone varchar(12), history_id INT ,allergy_id INT)
+    -> ;
+Query OK, 0 rows affected (0.30 sec)
+
+mysql> create table med_history(history_id INT ,diabetes bool, depression bool,migraine bool ,hyper bool);
+Query OK, 0 rows affected (0.20 sec)
+
+mysql> create table allergies(allergy_id INT ,drug bool, food bool,insect bool ,dust bool);
+Query OK, 0 rows affected (0.24 sec)
+
+mysql> show tables
+    -> ;
++---------------+
+| Tables_in_dcs |
++---------------+
+| allergies     |
+| demdetails    |
+| med_history   |
++---------------+
+3 rows in set (0.00 sec)
+
+mysql> insert into allergies values(1,1,1,1,1);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> show * from table allergies;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '* from table allergies' at line 1
+mysql> show * from allergies;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '* from allergies' at line 1
+mysql> select * from allergies;
++------------+------+------+--------+------+
+| allergy_id | drug | food | insect | dust |
++------------+------+------+--------+------+
+|          1 |    1 |    1 |      1 |    1 |
++------------+------+------+--------+------+
+1 row in set (0.00 sec)
+
+mysql> insert into allergies values(1,1,1,1,2);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from allergies;
++------------+------+------+--------+------+
+| allergy_id | drug | food | insect | dust |
++------------+------+------+--------+------+
+|          1 |    1 |    1 |      1 |    1 |
+|          1 |    1 |    1 |      1 |    2 |
++------------+------+------+--------+------+
+2 rows in set (0.00 sec)
+
+mysql> delete * from allergies where dust=2;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '* from allergies where dust=2' at line 1
+mysql> drop * from allergies where dust=2;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '* from allergies where dust=2' at line 1
+mysql> drop table from allergies where dust=2;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from allergies where dust=2' at line 1
+mysql> update * from allergies where dust=2 set (2,1,1,1,0);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '* from allergies where dust=2 set (2,1,1,1,0)' at line 1
+mysql> drop table allergies;
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> create table allergies(allergy_id INT ,drug bool, food bool,insect bool ,dust bool);
+Query OK, 0 rows affected (0.22 sec)
+
+mysql> insert into allergies values(1,1,1,1,1);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into allergies values(2,1,1,1,0);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into allergies values(3,1,0,1,0);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into allergies values(4,1,0,0,0);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into allergies values(5,1,0,0,1);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from allergies;
++------------+------+------+--------+------+
+| allergy_id | drug | food | insect | dust |
++------------+------+------+--------+------+
+|          1 |    1 |    1 |      1 |    1 |
+|          2 |    1 |    1 |      1 |    0 |
+|          3 |    1 |    0 |      1 |    0 |
+|          4 |    1 |    0 |      0 |    0 |
+|          5 |    1 |    0 |      0 |    1 |
++------------+------+------+--------+------+
+5 rows in set (0.00 sec)
+
+mysql> insert into med_history values(1,1,1,1,1);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into med_history values(2,0,0,0,0);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into med_history values(3,0,0,0,1);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into med_history values(4,0,0,1,0);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from med_history;
++------------+----------+------------+----------+-------+
+| history_id | diabetes | depression | migraine | hyper |
++------------+----------+------------+----------+-------+
+|          1 |        1 |          1 |        1 |     1 |
+|          2 |        0 |          0 |        0 |     0 |
+|          3 |        0 |          0 |        0 |     1 |
+|          4 |        0 |          0 |        1 |     0 |
++------------+----------+------------+----------+-------+
+4 rows in set (0.00 sec)
+
+mysql> insert into allergies values(6,0,0,0,0);
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into dem_details(1,"name1",20,"male","unmarried","udupi",4561237895");
+    ">     "> Ctrl-C -- exit!
+
+    ">
+    "> ;
+    ">
+    "> ssd
+    ">
+    "> "
+    ->
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1,"name1",20,"male","unmarried","udupi",4561237895");
+
+
+
+;
+
+ssd
+
+"' at line 1
+mysql> insert into dem_details(1,"name1",20,"male","unmarried","udupi","4561237895",0,0);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1,"name1",20,"male","unmarried","udupi","4561237895",0,0)' at line 1
+mysql> insert into dem_details(1,"name1",20,"male","unmarried","udupi","4561237895",0,0);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1,"name1",20,"male","unmarried","udupi","4561237895",0,0)' at line 1
+mysql> drop table dem_details;
+ERROR 1051 (42S02): Unknown table 'dcs.dem_details'
+mysql> drop table demdetails;
+Query OK, 0 rows affected (0.13 sec)
+
+mysql> create table demdetails(patient_id INT PRIMARY KEY, name varchar(50),age INT, sex varchar(5),marital_status varchar(10), address varchar(50),phone varchar(12), history_id INT ,allergy_id INT)
+    -> ;
+Query OK, 0 rows affected (0.27 sec)
+
+mysql> insert into demdetails(1,"name1",20,"male","unmarried","udupi","4561237895",0,0);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1,"name1",20,"male","unmarried","udupi","4561237895",0,0)' at line 1
+mysql> drop table demdetails;
+Query OK, 0 rows affected (0.13 sec)
+
+mysql> create table demdetails(patient_id INT PRIMARY KEY, name varchar(50),age INT, sex varchar(5),marital_status varchar(10), address varchar(50),phone varchar(12), history_id INT ,allergy_id INT);
+Query OK, 0 rows affected (0.22 sec)
+
+mysql> insert into demdetails(1,"name1",20,"male","unmarried","udupi","4561237895",0,0);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1,"name1",20,"male","unmarried","udupi","4561237895",0,0)' at line 1
+mysql> insert into demdetails values(1,"name1",20,"male","unmarried","udupi","4561237895",0,0);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select * from demdetails;
++------------+-------+------+------+----------------+---------+------------+------------+------------+
+| patient_id | name  | age  | sex  | marital_status | address | phone      | history_id | allergy_id |
++------------+-------+------+------+----------------+---------+------------+------------+------------+
+|          1 | name1 |   20 | male | unmarried      | udupi   | 4561237895 |          0 |          0 |
++------------+-------+------+------+----------------+---------+------------+------------+------------+
+1 row in set (0.00 sec)
+
+mysql> select (name,age,sex,marital_status,address,phone,  drug, food , insect, dust) from demdetails join allergies on demdetails.allergy_id = allergies.allergy_id
+    -> ;
+ERROR 1241 (21000): Operand should contain 1 column(s)
+mysql> select (name,age,sex,marital_status,address,phone,drug, food , insect, dust) from demdetails,allergies join allergies on demdetails.allergy_id = allergies.allergy_id
+    -> ;
+ERROR 1066 (42000): Not unique table/alias: 'allergies'
+mysql> select (name,age,sex,marital_status,address,phone) from demdetails;
+ERROR 1241 (21000): Operand should contain 1 column(s)
+mysql> select * from demdetails;
++------------+-------+------+------+----------------+---------+------------+------------+------------+
+| patient_id | name  | age  | sex  | marital_status | address | phone      | history_id | allergy_id |
++------------+-------+------+------+----------------+---------+------------+------------+------------+
+|          1 | name1 |   20 | male | unmarried      | udupi   | 4561237895 |          0 |          0 |
++------------+-------+------+------+----------------+---------+------------+------------+------------+
+1 row in set (0.00 sec)
+
+mysql> select * from demdetails join allergies on allergies.allergy_id = demdetails.allergy_id;
+Empty set (0.03 sec)
+
+mysql> select * from demdetails join allergies on demdetails.allergy_id = allergies.allergy_id;
+Empty set (0.00 sec)
+
+mysql> select (name,age,sex,marital_status,address,phone,allergies) from demdetails where allergies (select dust from allergies where allergy_id = demdetails.allergy_id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'select dust from allergies where allergy_id = demdetails.allergy_id' at line 1
+mysql>  insert into demdetails values(2,"name2",40,"male","married","mangalore","4567895",1,0);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from demdetails;
++------------+-------+------+------+----------------+-----------+------------+------------+------------+
+| patient_id | name  | age  | sex  | marital_status | address   | phone      | history_id | allergy_id |
++------------+-------+------+------+----------------+-----------+------------+------------+------------+
+|          1 | name1 |   20 | male | unmarried      | udupi     | 4561237895 |          0 |          0 |
+|          2 | name2 |   40 | male | married        | mangalore | 4567895    |          1 |          0 |
++------------+-------+------+------+----------------+-----------+------------+------------+------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from demdetails where patient_id = 2;
++------------+-------+------+------+----------------+-----------+---------+------------+------------+
+| patient_id | name  | age  | sex  | marital_status | address   | phone   | history_id | allergy_id |
++------------+-------+------+------+----------------+-----------+---------+------------+------------+
+|          2 | name2 |   40 | male | married        | mangalore | 4567895 |          1 |          0 |
++------------+-------+------+------+----------------+-----------+---------+------------+------------+
+1 row in set (0.03 sec)
+
+mysql> select * from allergies where allergy_id = 0
+    -> ;
+Empty set (0.00 sec)
+
+mysql> select * from allergies where allergy_id = 1;
++------------+------+------+--------+------+
+| allergy_id | drug | food | insect | dust |
++------------+------+------+--------+------+
+|          1 |    1 |    1 |      1 |    1 |
++------------+------+------+--------+------+
+1 row in set (0.00 sec)
+
+mysql> insert into allergies values(0,0,0,0,0);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from med_history;
++------------+----------+------------+----------+-------+
+| history_id | diabetes | depression | migraine | hyper |
++------------+----------+------------+----------+-------+
+|          1 |        1 |          1 |        1 |     1 |
+|          2 |        0 |          0 |        0 |     0 |
+|          3 |        0 |          0 |        0 |     1 |
+|          4 |        0 |          0 |        1 |     0 |
++------------+----------+------------+----------+-------+
+4 rows in set (0.00 sec)
+
+mysql> drop table allergies;
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> create table allergies(allergy_id INT ,drug bool, food bool,insect bool ,dust bool);
+Query OK, 0 rows affected (0.17 sec)
+
+mysql> insert into allergies values(0,0,0,0,0);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into allergies values(1,0,0,0,1);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into allergies values(2,0,0,1,0);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into allergies values(3,0,0,1,1);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into allergies values(4,0,1,0,0);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into allergies values(5,0,1,0,1);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into allergies values(6,0,1,1,0);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into allergies values(7,0,1,1,1);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into allergies values(8,1,0,0,0);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into allergies values(9,1,0,0,1);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into allergies values(10,1,0,1,0);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into allergies values(11,1,0,1,1);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into allergies values(12,1,1,0,0);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into allergies values(13,1,1,0,1);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into allergies values(14,1,1,1,0);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into allergies values(15,1,1,1,1);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select * from allergies;
++------------+------+------+--------+------+
+| allergy_id | drug | food | insect | dust |
++------------+------+------+--------+------+
+|          0 |    0 |    0 |      0 |    0 |
+|          1 |    0 |    0 |      0 |    1 |
+|          2 |    0 |    0 |      1 |    0 |
+|          3 |    0 |    0 |      1 |    1 |
+|          4 |    0 |    1 |      0 |    0 |
+|          5 |    0 |    1 |      0 |    1 |
+|          6 |    0 |    1 |      1 |    0 |
+|          7 |    0 |    1 |      1 |    1 |
+|          8 |    1 |    0 |      0 |    0 |
+|          9 |    1 |    0 |      0 |    1 |
+|         10 |    1 |    0 |      1 |    0 |
+|         11 |    1 |    0 |      1 |    1 |
+|         12 |    1 |    1 |      0 |    0 |
+|         13 |    1 |    1 |      0 |    1 |
+|         14 |    1 |    1 |      1 |    0 |
+|         15 |    1 |    1 |      1 |    1 |
++------------+------+------+--------+------+
+16 rows in set (0.00 sec)
+
+mysql> drop table med_history;
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> insert into med_history values(0,0,0,0,0);
+ERROR 1146 (42S02): Table 'dcs.med_history' doesn't exist
+mysql> create table med_history(history_id INT ,diabetes bool, depression bool,migraine bool ,hyper bool);
+Query OK, 0 rows affected (0.23 sec)
+
+mysql> insert into med_history values(0,0,0,0,0);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into med_history values(1,0,0,0,1);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into med_history values(2,0,0,1,0);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into med_history values(3,0,0,1,1);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into med_history values(4,0,1,0,0);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into med_history values(5,0,1,0,1);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into med_history values(6,0,1,1,0);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into med_history values(7,0,1,1,1);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into med_history values(8,1,0,0,0);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into med_history values(9,1,0,0,1);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into med_history values(10,1,0,1,0);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into med_history values(11,1,0,1,1);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into med_history values(12,1,1,0,0);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into med_history values(13,1,1,0,1);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into med_history values(14,1,1,1,0);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into med_history values(15,1,1,1,1);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select * from med_history;
++------------+----------+------------+----------+-------+
+| history_id | diabetes | depression | migraine | hyper |
++------------+----------+------------+----------+-------+
+|          0 |        0 |          0 |        0 |     0 |
+|          1 |        0 |          0 |        0 |     1 |
+|          2 |        0 |          0 |        1 |     0 |
+|          3 |        0 |          0 |        1 |     1 |
+|          4 |        0 |          1 |        0 |     0 |
+|          5 |        0 |          1 |        0 |     1 |
+|          6 |        0 |          1 |        1 |     0 |
+|          7 |        0 |          1 |        1 |     1 |
+|          8 |        1 |          0 |        0 |     0 |
+|          9 |        1 |          0 |        0 |     1 |
+|         10 |        1 |          0 |        1 |     0 |
+|         11 |        1 |          0 |        1 |     1 |
+|         12 |        1 |          1 |        0 |     0 |
+|         13 |        1 |          1 |        0 |     1 |
+|         14 |        1 |          1 |        1 |     0 |
+|         15 |        1 |          1 |        1 |     1 |
++------------+----------+------------+----------+-------+
+16 rows in set (0.00 sec)
+
+mysql> select * from allergies;
++------------+------+------+--------+------+
+| allergy_id | drug | food | insect | dust |
++------------+------+------+--------+------+
+|          0 |    0 |    0 |      0 |    0 |
+|          1 |    0 |    0 |      0 |    1 |
+|          2 |    0 |    0 |      1 |    0 |
+|          3 |    0 |    0 |      1 |    1 |
+|          4 |    0 |    1 |      0 |    0 |
+|          5 |    0 |    1 |      0 |    1 |
+|          6 |    0 |    1 |      1 |    0 |
+|          7 |    0 |    1 |      1 |    1 |
+|          8 |    1 |    0 |      0 |    0 |
+|          9 |    1 |    0 |      0 |    1 |
+|         10 |    1 |    0 |      1 |    0 |
+|         11 |    1 |    0 |      1 |    1 |
+|         12 |    1 |    1 |      0 |    0 |
+|         13 |    1 |    1 |      0 |    1 |
+|         14 |    1 |    1 |      1 |    0 |
+|         15 |    1 |    1 |      1 |    1 |
++------------+------+------+--------+------+
+16 rows in set (0.00 sec)
+
+mysql> select * from demdetails;
++------------+-------+------+------+----------------+-----------+------------+------------+------------+
+| patient_id | name  | age  | sex  | marital_status | address   | phone      | history_id | allergy_id |
++------------+-------+------+------+----------------+-----------+------------+------------+------------+
+|          1 | name1 |   20 | male | unmarried      | udupi     | 4561237895 |          0 |          0 |
+|          2 | name2 |   40 | male | married        | mangalore | 4567895    |          1 |          0 |
++------------+-------+------+------+----------------+-----------+------------+------------+------------+
+2 rows in set (0.00 sec)
+
+mysql> insert into demdetails values(5,jkdsjk,67,n,jh,787878,10,10)
+    -> ;
+ERROR 1054 (42S22): Unknown column 'jkdsjk' in 'field list'
+mysql> insert into demdetails(5,\"name1\",20,\"male\",\"unmarried\",\"udupi\",\"4561237895\",0,0);
+ERROR:
+Unknown command '\"'.
+ERROR:
+Unknown command '\"'.
+ERROR:
+Unknown command '\"'.
+ERROR:
+Unknown command '\"'.
+ERROR:
+Unknown command '\"'.
+ERROR:
+Unknown command '\"'.
+ERROR:
+Unknown command '\"'.
+ERROR:
+Unknown command '\"'.
+ERROR:
+Unknown command '\"'.
+ERROR:
+Unknown command '\"'.
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '5,\"name1\",20,\"male\",\"unmarried\",\"udupi\",\"4561237895\",0,0)' at line 1
+mysql> insert into demdetails(5,"name1",20,"male","unmarried","udupi","4561237895",0,0);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '5,"name1",20,"male","unmarried","udupi","4561237895",0,0)' at line 1
+mysql> insert into demdetails(5,"name1",20,"male","unmarried",mysql> Ctrl-C -- exit!,0);
+
+mysql> select * from demdetails
+    -> ;
++------------+-------+------+------+----------------+-----------+------------+------------+------------+
+| patient_id | name  | age  | sex  | marital_status | address   | phone      | history_id | allergy_id |
++------------+-------+------+------+----------------+-----------+------------+------------+------------+
+|          1 | name1 |   20 | male | unmarried      | udupi     | 4561237895 |          0 |          0 |
+|          2 | name2 |   40 | male | married        | mangalore | 4567895    |          1 |          0 |
++------------+-------+------+------+----------------+-----------+------------+------------+------------+
+2 rows in set (0.00 sec)
+
+mysql> insert into demdetails(5,"name1",20,"male","unmarr","udupi","4561237895",0,0);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '5,"name1",20,"male","unmarr","udupi","4561237895",0,0)' at line 1
+mysql> insert into demdetails values(5,"name1",20,"male","unmarr","udupi","4561237895",0,0);
+Query OK, 1 row affected (0.02 sec)
+
+mysql>
+mysql> select * from demdetails;
++------------+-------+------+------+----------------+-----------+------------+------------+------------+
+| patient_id | name  | age  | sex  | marital_status | address   | phone      | history_id | allergy_id |
++------------+-------+------+------+----------------+-----------+------------+------------+------------+
+|          1 | name1 |   20 | male | unmarried      | udupi     | 4561237895 |          0 |          0 |
+|          2 | name2 |   40 | male | married        | mangalore | 4567895    |          1 |          0 |
+|          5 | name1 |   20 | male | unmarr         | udupi     | 4561237895 |          0 |          0 |
+|          6 | name1 |   20 | male | unmarried      | udupi     | 4561237895 |          0 |          0 |
++------------+-------+------+------+----------------+-----------+------------+------------+------------+
+4 rows in set (0.00 sec)
+
+mysql>
+
+
+
